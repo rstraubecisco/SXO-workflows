@@ -1,1 +1,1 @@
-# SXO-umbrella-block-events
+# SXO-workflows
