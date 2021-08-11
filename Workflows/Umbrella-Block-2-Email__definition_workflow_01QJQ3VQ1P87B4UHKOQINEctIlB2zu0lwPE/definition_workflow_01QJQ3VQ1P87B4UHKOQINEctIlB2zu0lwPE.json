@@ -1,11 +1,25 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01QJQ3VQ1P87B4UHKOQINEctIlB2zu0lwPE",
-    "name": "RS - Umbrella - Search DNS Activity by Category",
-    "title": "RS - Umbrella - Search DNS Activity by Category",
+    "name": "RS - Umbrella - Block 2 Email",
+    "title": "RS - Umbrella - Block 2 Email",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Umbrella Organization ID",
+          "type": "datatype.string",
+          "description": "Your Umbrella organization ID. This can be found in the URL of your Umbrella dashboard. For example, in this URL the organization ID is \"1234567\": https://dashboard.umbrella.com/o/1234567/#/overview",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01QJQ3VPVBXRO48sJVHAmYX12pdqBhfku0g",
+        "object_type": "variable_workflow"
+      },
       {
         "schema_id": "datatype.integer",
         "properties": {
@@ -23,34 +37,6 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "securex-orchestration",
-          "scope": "local",
-          "name": "ServiceNow User ID",
-          "type": "datatype.string",
-          "description": "The username of the user you're using to open incident tickets. This can either match the username in your ServiceNow account key or, if the account has the appropriate permissions, can be a different user",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01QJQ3VPVBQ460dVfo6uykuuSNiMqp92wFZ",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "Umbrella Organization ID",
-          "type": "datatype.string",
-          "description": "Your Umbrella organization ID. This can be found in the URL of your Umbrella dashboard. For example, in this URL the organization ID is \"1234567\": https://dashboard.umbrella.com/o/1234567/#/overview",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01QJQ3VPVBXRO48sJVHAmYX12pdqBhfku0g",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
           "value": "Movies",
           "scope": "input",
           "name": "Category to Filter On",
@@ -61,6 +47,20 @@
         },
         "unique_name": "variable_workflow_01QJQ3VPVBV6K6VnbCTOFWweDn8ICnuD7n1",
         "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "securex-orchestration",
+          "scope": "local",
+          "name": "ServiceNow User ID",
+          "type": "datatype.string",
+          "description": "The username of the user you're using to open incident tickets. This can either match the username in your ServiceNow account key or, if the account has the appropriate permissions, can be a different user",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01QJQ3VPVBQ460dVfo6uykuuSNiMqp92wFZ",
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -69,7 +69,7 @@
       },
       "delete_workflow_instance": false,
       "description": "Still being modified by Rene\n\nThis workflow searches and returns Umbrella DNS activity for the last 7 days based on the Umbrella category provided. The data is then parsed and posted in a ServiceNow incident.\n\nTargets: ServiceNow, Umbrella OAuth, Umbrella Reporting v2\n\nSteps:\n[] Get a token for the Umbrella reporting API\n[] Fetch a list of categories\n[] Extract the category ID for the category provided\n[] Check that the category ID was found (if not, end the workflow)\n[] Get activity for the category\n[] Extract the results\n[] Create a Service Now incident ticket\n\nMore information: https://ciscosecurity.github.io/sxo-05-security-workflows/workflows/0037",
-      "display_name": "RS - Umbrella - Search DNS Activity by Category",
+      "display_name": "RS - Umbrella - Block 2 Email",
       "runtime_user": {
         "target_default": true
       },
@@ -488,8 +488,8 @@
     }
   },
   "atomic_workflows": [
-    "definition_workflow_01JAL22JA2KDM70amrajus8K4adt80jPl6C",
+    "definition_workflow_01JAL8FWN0U1D7NP3p9TlCVEYn1wfnyji8a",
     "definition_workflow_01P8BB9H4V1SW2fmJVfRET8Ux1DZmVrzZxz",
-    "definition_workflow_01JAL8FWN0U1D7NP3p9TlCVEYn1wfnyji8a"
+    "definition_workflow_01JAL22JA2KDM70amrajus8K4adt80jPl6C"
   ]
 }
