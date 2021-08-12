@@ -9,7 +9,7 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
+          "value": "1890771",
           "scope": "local",
           "name": "Umbrella Organization ID",
           "type": "datatype.string",
@@ -18,34 +18,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01QJQ3VPVBXRO48sJVHAmYX12pdqBhfku0g",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 50,
-          "scope": "local",
-          "name": "Maximum Records",
-          "type": "datatype.integer",
-          "description": "The maximum number of search results to fetch",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01QJQ3VPVBWJI0hrD4ktXtmxiIS7n516mFv",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "Movies",
-          "scope": "input",
-          "name": "Category to Filter On",
-          "type": "datatype.string",
-          "description": "The category to search for. A list of categories can be found here: https://docs.umbrella.com/deployment-umbrella/docs/content-categories",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01QJQ3VPVBV6K6VnbCTOFWweDn8ICnuD7n1",
         "object_type": "variable_workflow"
       },
       {
@@ -61,6 +33,20 @@
         },
         "unique_name": "variable_workflow_01QJQ3VPVBQ460dVfo6uykuuSNiMqp92wFZ",
         "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 50,
+          "scope": "local",
+          "name": "Maximum Records",
+          "type": "datatype.integer",
+          "description": "The maximum number of search results to fetch",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01QJQ3VPVBWJI0hrD4ktXtmxiIS7n516mFv",
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -68,7 +54,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "description": "Still being modified by Rene\n\nThis workflow searches and returns Umbrella DNS activity for the last 7 days based on the Umbrella category provided. The data is then parsed and posted in a ServiceNow incident.\n\nTargets: ServiceNow, Umbrella OAuth, Umbrella Reporting v2\n\nSteps:\n[] Get a token for the Umbrella reporting API\n[] Fetch a list of categories\n[] Extract the category ID for the category provided\n[] Check that the category ID was found (if not, end the workflow)\n[] Get activity for the category\n[] Extract the results\n[] Create a Service Now incident ticket\n\nMore information: https://ciscosecurity.github.io/sxo-05-security-workflows/workflows/0037",
+      "description": "Still being modified by Rene\n\nThis workflow should be run scheduled (every  10 minutes by  default) to search for Umbrella DNS block activity for that time frame. The data is then parsed if a bblock activity has been found, then a notification will be created (sending an email\n\nTargets: Email, Umbrella OAuth, Umbrella Reporting v2\n\nSteps:\n[] Get a token for the Umbrella reporting API\n[] Get all DNS block activities for the time frame\n[] Extract the results\n[] If blocks were found, send an Email with  the results",
       "display_name": "RS - Umbrella - Block 2 Email",
       "runtime_user": {
         "target_default": true
@@ -130,102 +116,6 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01QJQ3W5U2R935EzNtuO13Mg4bO5bRDHtng",
-        "name": "Umbrella - Reporting v2 - Get Categories",
-        "title": "Umbrella - Reporting v2 - Get Categories",
-        "type": "workflow.atomic_workflow",
-        "base_type": "subworkflow",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "Umbrella - Reporting v2 - Get Categories",
-          "input": {
-            "variable_workflow_01P8BG7ZXQPTE3JquLssJ8abKflvirNVYim": "$workflow.definition_workflow_01QJQ3VQ1P87B4UHKOQINEctIlB2zu0lwPE.local.variable_workflow_01QJQ3VPVBXRO48sJVHAmYX12pdqBhfku0g$",
-            "variable_workflow_01PFUQ4MPBQRF4iscqj62CS0z0A3lrxXOC8": "$activity.definition_activity_01QJQ3W1B4HSP2lB6AsmW3up0qtjMmIyfNZ.output.variable_workflow_01JAL4N53R4SK3xdy9WH4uXGM8tGXCh87xF$"
-          },
-          "runtime_user": {
-            "target_default": true
-          },
-          "skip_execution": false,
-          "target": {
-            "use_workflow_target_group": true
-          },
-          "workflow_id": "definition_workflow_01P8BB9H4V1SW2fmJVfRET8Ux1DZmVrzZxz"
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01QJQ3WA94VOE4YQiNj3K87tKOGBb30UKSe",
-        "name": "JSONPath Query",
-        "title": "Extract category ID by label",
-        "type": "corejava.jsonpathquery",
-        "base_type": "activity",
-        "properties": {
-          "action_timeout": 180,
-          "continue_on_failure": true,
-          "display_name": "Extract category ID by label",
-          "input_json": "$activity.definition_activity_01QJQ3W5U2R935EzNtuO13Mg4bO5bRDHtng.output.variable_workflow_01P9146W0DATK2fdoT91i3QhB0l7gpR4CNI$",
-          "jsonpath_queries": [
-            {
-              "jsonpath_query": "$.data[?(@.label==\"$workflow.definition_workflow_01QJQ3VQ1P87B4UHKOQINEctIlB2zu0lwPE.input.variable_workflow_01QJQ3VPVBV6K6VnbCTOFWweDn8ICnuD7n1$\")].id",
-              "jsonpath_query_name": "categoryId",
-              "jsonpath_query_type": "integer"
-            }
-          ],
-          "skip_execution": false
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01QJQ3WDI7ZME63ZS71t3zAr3YVG8gcMyL3",
-        "name": "Condition Block",
-        "title": "Was the category found?",
-        "type": "logic.if_else",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "Was the category found?",
-          "skip_execution": false
-        },
-        "object_type": "definition_activity",
-        "blocks": [
-          {
-            "unique_name": "definition_activity_01QJQ3WG9PPHZ5fOhtP5rvsUvnNXklW030y",
-            "name": "Condition Branch",
-            "title": "No",
-            "type": "logic.condition_block",
-            "base_type": "activity",
-            "properties": {
-              "condition": {
-                "left_operand": "$activity.definition_activity_01QJQ3WA94VOE4YQiNj3K87tKOGBb30UKSe.output.succeeded$",
-                "operator": "eq",
-                "right_operand": false
-              },
-              "continue_on_failure": false,
-              "display_name": "No",
-              "skip_execution": false
-            },
-            "object_type": "definition_activity",
-            "actions": [
-              {
-                "unique_name": "definition_activity_01QJQ3WIACI920zmmRLxfiHiDQstWgEyHjb",
-                "name": "Completed",
-                "title": "Failed",
-                "type": "logic.completed",
-                "base_type": "activity",
-                "properties": {
-                  "completion_type": "failed-completed",
-                  "continue_on_failure": false,
-                  "display_name": "Failed",
-                  "result_message": "The category \"$workflow.definition_workflow_01QJQ3VQ1P87B4UHKOQINEctIlB2zu0lwPE.input.variable_workflow_01QJQ3VPVBV6K6VnbCTOFWweDn8ICnuD7n1$\" was not found\n\nCategory list: $activity.definition_activity_01QJQ3W5U2R935EzNtuO13Mg4bO5bRDHtng.output.variable_workflow_01P9146W0DATK2fdoT91i3QhB0l7gpR4CNI$",
-                  "skip_execution": false
-                },
-                "object_type": "definition_activity"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "unique_name": "definition_activity_01QJQ3WLWHXCG2rienNG4p2kD2AtZpndNPU",
         "name": "Umbrella - Reporting v2 - Get Activity",
         "title": "Umbrella - Reporting v2 - Get Activity",
@@ -235,12 +125,12 @@
           "continue_on_failure": false,
           "display_name": "Umbrella - Reporting v2 - Get Activity",
           "input": {
-            "variable_workflow_01JALKO710UTO2wZpcvuLmzqFv1FA3xFzwq": "-7days",
+            "variable_workflow_01JALKO710UTO2wZpcvuLmzqFv1FA3xFzwq": "-500minutes",
             "variable_workflow_01JALKYCHU7PZ0s6aeNGfrpqMw1pg4z93nL": "now",
             "variable_workflow_01JALL678YJP16G9M6pDJgCQDJDEd1uClcJ": "$workflow.definition_workflow_01QJQ3VQ1P87B4UHKOQINEctIlB2zu0lwPE.local.variable_workflow_01QJQ3VPVBXRO48sJVHAmYX12pdqBhfku0g$",
             "variable_workflow_01JALLM5UG9555ntDGvFTiJlhR0Wn56dGXk": "$workflow.definition_workflow_01QJQ3VQ1P87B4UHKOQINEctIlB2zu0lwPE.local.variable_workflow_01QJQ3VPVBWJI0hrD4ktXtmxiIS7n516mFv$",
             "variable_workflow_01JALM16JSYI968TLYjyDQ4KMQ8p6QwTEYP": 0,
-            "variable_workflow_01JALN226TACI3NLBO4sZ5XkjL6FZWKEqVi": "\u0026categories=$activity.definition_activity_01QJQ3WA94VOE4YQiNj3K87tKOGBb30UKSe.output.jsonpath_queries.categoryId$",
+            "variable_workflow_01JALN226TACI3NLBO4sZ5XkjL6FZWKEqVi": "\u0026verdict=blocked",
             "variable_workflow_01JALOYJ7F43M7gSov8Ntx5l0vd8WjUt1lC": "$activity.definition_activity_01QJQ3W1B4HSP2lB6AsmW3up0qtjMmIyfNZ.output.variable_workflow_01JAL4N53R4SK3xdy9WH4uXGM8tGXCh87xF$",
             "variable_workflow_01JAM4ETYM1J95FPj4k0xYyEYNiGuOoZXvF": "dns"
           },
@@ -488,8 +378,7 @@
     }
   },
   "atomic_workflows": [
-    "definition_workflow_01JAL8FWN0U1D7NP3p9TlCVEYn1wfnyji8a",
-    "definition_workflow_01P8BB9H4V1SW2fmJVfRET8Ux1DZmVrzZxz",
-    "definition_workflow_01JAL22JA2KDM70amrajus8K4adt80jPl6C"
+    "definition_workflow_01JAL22JA2KDM70amrajus8K4adt80jPl6C",
+    "definition_workflow_01JAL8FWN0U1D7NP3p9TlCVEYn1wfnyji8a"
   ]
 }
