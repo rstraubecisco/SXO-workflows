@@ -7,17 +7,54 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.string",
+        "schema_id": "tabletype_0219CKPYO1XYU0C4W6FJS4GmjI2w3X8fYQW",
         "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Kenna API Token",
-          "type": "datatype.string",
-          "description": "Kenna API Token",
-          "is_required": true,
+          "value": [
+            {
+              "column_data": {
+                "RM_Name": "Windows 11",
+                "RM_Search_String": "Windows 11*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows 10",
+                "RM_Search_String": "Windows 10*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows 8.x",
+                "RM_Search_String": "Windows 8*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows 7",
+                "RM_Search_String": "Windows 7*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows XP",
+                "RM_Search_String": "Windows XP*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows CE",
+                "RM_Search_String": "Windows CE*"
+              }
+            }
+          ],
+          "scope": "local",
+          "name": "Win Desktops",
+          "type": "datatype.table",
+          "description": "List of custom RM definitions with Risk Meter name and search query for Windows Desktop OS. These RMs will be children of the Windows Desktop RM. Add other Windows Desktop RMs as needed.",
+          "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc",
+        "unique_name": "variable_workflow_021A2T8JTS1WP4HLevPHMjTJMIAPcguTDTW",
         "object_type": "variable_workflow"
       },
       {
@@ -50,12 +87,72 @@
             }
           ],
           "scope": "local",
-          "name": "Kenna RM Table",
+          "name": "Custom RM Table",
           "type": "datatype.table",
+          "description": "List of custom RM definitions with Risk Meter name and search query. Add your own Risk Meters as needed.",
           "is_required": false,
           "is_invisible": false
         },
         "unique_name": "variable_workflow_0219CLA2359V16lldItAk8daiPPsrXthJXN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_0219CKPYO1XYU0C4W6FJS4GmjI2w3X8fYQW",
+        "properties": {
+          "value": [
+            {
+              "column_data": {
+                "RM_Name": "Windows Server 2022",
+                "RM_Search_String": "*2022*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows Server 2019",
+                "RM_Search_String": "*2019*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows Server 2016",
+                "RM_Search_String": "*2016*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows Server 2012",
+                "RM_Search_String": "*2012*"
+              }
+            },
+            {
+              "column_data": {
+                "RM_Name": "Windows Server 2008",
+                "RM_Search_String": "*2008*"
+              }
+            }
+          ],
+          "scope": "local",
+          "name": "Windows Server",
+          "type": "datatype.table",
+          "description": "List of custom RM definitions with Risk Meter name and search query for Windows Server OS. These RMs will be children of the Windows Server RM. Add other Windows Server RMs as needed.",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021APENFR9I4D5Ccz2OsOkiFRKqrBKRk8d6",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Kenna API Token",
+          "type": "datatype.string",
+          "description": "Kenna API Token, must be provided at the start of the workflow.",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc",
         "object_type": "variable_workflow"
       }
     ],
@@ -64,7 +161,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "description": "This workflow creates a set of Kenna Risk Meter groups based on Risk Meter Names and Search Queries stored in the local \"Kenna RM Table\".\n\nTarget Group: not required \nTargets: create a Target (HTTP Endpoint) with your API base URL\n\nSteps:\n[] Select your Target\n[] Adjust the local Kenna RM Table as needed before running this workflow\n[] Run the workflow \n[] Enter required input for workflow execution (API token)\n[] Workflow is looping through the Kenn RM Table\n[] Creating a new Risk Meter for each row in table with RISKMETERNAME and RISKMETERSEARCH\n",
+      "description": "This workflow creates a set of Kenna Risk Meter groups based on Risk Meter Names and Search Queries stored in the local \"Kenna RM Table\".\n\nTarget Group: not required \nTargets: create a Target (HTTP Endpoint) with your API base URL\n\nSteps:\n[] Select your Target\n[] Adjust the local Kenna RM Table as needed before running this workflow\n[] Run the workflow \n[] Enter required input for workflow execution (API token)\n[] Workflow is looping through the Custom RM Table\n[] Creating a new Risk Meter for each row in table with RISKMETERNAME and RISKMETERSEARCH\n[] Creating hierarchical Risk Meters for all Windows OS \n",
       "display_name": "Kenna - Create POC Risk Meters",
       "runtime_user": {
         "target_default": true
@@ -80,13 +177,13 @@
       {
         "unique_name": "definition_activity_0212ZX1LO33T22jMb5RuczKHoCXlNbQud6D",
         "name": "For Each",
-        "title": "For Each",
+        "title": "Create General RMs",
         "type": "logic.for_each",
         "base_type": "activity",
         "properties": {
           "continue_on_failure": false,
-          "display_name": "For Each",
-          "skip_execution": false,
+          "display_name": "Create General RMs",
+          "skip_execution": true,
           "source_array": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.local.variable_workflow_0219CLA2359V16lldItAk8daiPPsrXthJXN$"
         },
         "object_type": "definition_activity",
@@ -115,6 +212,287 @@
               "display_name": "Create RM from Table",
               "method": "POST",
               "relative_url": "/asset_groups",
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "use_workflow_target": true
+              },
+              "user_agent": "SXO"
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_021A326FQO2QB0XVDDxRve4DKxCUN79BAEz",
+        "name": "HTTP Request",
+        "title": "Create Windows all RM",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "allow_headers_redirect": false,
+          "body": "{\n     \"query\": {\n          \"operating_system\": [\"Windows*\"]\n     },\n     \"name\": \"Windows all\"\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "X-Risk-Token",
+              "value": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.input.variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc$"
+            }
+          ],
+          "display_name": "Create Windows all RM",
+          "method": "POST",
+          "relative_url": "/asset_groups",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          },
+          "user_agent": "SXO"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_021A399YAURCP4xAcyAuT27e4JuqGF9tylb",
+        "name": "JSONPath Query",
+        "title": "Store Win all RM ID",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "description": "We need the RM ID for creating child RMs",
+          "display_name": "Store Win all RM ID",
+          "input_json": "$activity.definition_activity_021A326FQO2QB0XVDDxRve4DKxCUN79BAEz.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.asset_group.id",
+              "jsonpath_query_name": "id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_021A3G9MR8T9823cS5nblD9f0j5g3CvOgep",
+        "name": "HTTP Request",
+        "title": "Create Windows Server RM",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "allow_headers_redirect": false,
+          "body": "{\n     \"query\": {\n          \"operating_system\": [\"*Server*\"]\n     },\n     \"name\": \"Windows Server\"\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "X-Risk-Token",
+              "value": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.input.variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc$"
+            }
+          ],
+          "display_name": "Create Windows Server RM",
+          "method": "POST",
+          "relative_url": "/asset_groups/$activity.definition_activity_021A399YAURCP4xAcyAuT27e4JuqGF9tylb.output.jsonpath_queries.id$/children",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          },
+          "user_agent": "SXO"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_021A3MQPVNTP50EJ4WYuM8J4lXcEgOvqiNv",
+        "name": "JSONPath Query",
+        "title": "Store Win Srv RM ID",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "description": "We need the RM ID for creating child RMs",
+          "display_name": "Store Win Srv RM ID",
+          "input_json": "$activity.definition_activity_021A3G9MR8T9823cS5nblD9f0j5g3CvOgep.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.asset_group.id",
+              "jsonpath_query_name": "id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_021AP8RNRUFEZ51Ztu3t4nRt1QNMfbDh4v9",
+        "name": "For Each",
+        "title": "Create Win Srv RMs",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Create Win Srv RMs",
+          "skip_execution": false,
+          "source_array": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.local.variable_workflow_021APENFR9I4D5Ccz2OsOkiFRKqrBKRk8d6$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_021APEZ91AVJJ2KPOgVyl2SKtCh4pZcMbND",
+            "name": "HTTP Request",
+            "title": "Create RM from Table",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "accept": "application/json",
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "allow_headers_redirect": false,
+              "body": "{\n     \"query\": {\n          \"operating_system\": \"$activity.definition_activity_021AP8RNRUFEZ51Ztu3t4nRt1QNMfbDh4v9.input.source_array[@].RM_Search_String$\"\n     },\n     \"name\": \"$activity.definition_activity_021AP8RNRUFEZ51Ztu3t4nRt1QNMfbDh4v9.input.source_array[@].RM_Name$\"\n}",
+              "content_type": "application/json",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "X-Risk-Token",
+                  "value": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.input.variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc$"
+                }
+              ],
+              "description": "Creating Windows Desktop Risk Meters",
+              "display_name": "Create RM from Table",
+              "method": "POST",
+              "relative_url": "/asset_groups/$activity.definition_activity_021A3MQPVNTP50EJ4WYuM8J4lXcEgOvqiNv.output.jsonpath_queries.id$/children",
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "use_workflow_target": true
+              },
+              "user_agent": "SXO"
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_021A3KI8YZJ4S4VEivGFBK0sJn3z7yiqFri",
+        "name": "HTTP Request",
+        "title": "Create Windows Desktop RM",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "allow_headers_redirect": false,
+          "body": "{\n     \"query\": {\n          \"operating_system\": [\"Windows XP*\", \"Windows 7*\", \"Windows 8*\", \"Windows 10*\", \"Windows 11*\", \"Windows CE*\"]\n     },\n     \"name\": \"Windows Desktop\"\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "X-Risk-Token",
+              "value": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.input.variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc$"
+            }
+          ],
+          "display_name": "Create Windows Desktop RM",
+          "method": "POST",
+          "relative_url": "/asset_groups/$activity.definition_activity_021A399YAURCP4xAcyAuT27e4JuqGF9tylb.output.jsonpath_queries.id$/children",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          },
+          "user_agent": "SXO"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_021A3NVYZWDQX4ZokLyI9WVpKQiSBGGHQjP",
+        "name": "JSONPath Query",
+        "title": "Store Win Deskt RM ID",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "description": "We need the RM ID for creating child RMs",
+          "display_name": "Store Win Deskt RM ID",
+          "input_json": "$activity.definition_activity_021A3KI8YZJ4S4VEivGFBK0sJn3z7yiqFri.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.asset_group.id",
+              "jsonpath_query_name": "id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_021AQEFZA6WH11WyJJdLIbRpgmKBDMEaA4S",
+        "name": "For Each",
+        "title": "Create Win Deskt RMs",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Create Win Deskt RMs",
+          "skip_execution": false,
+          "source_array": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.local.variable_workflow_021A2T8JTS1WP4HLevPHMjTJMIAPcguTDTW$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_021AQEFZAAJ3W0wp1LYdQCfzXxy0zEsvg0d",
+            "name": "HTTP Request",
+            "title": "Create RM from Table",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "accept": "application/json",
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "allow_headers_redirect": false,
+              "body": "{\n     \"query\": {\n          \"operating_system\": \"$activity.definition_activity_021AQEFZA6WH11WyJJdLIbRpgmKBDMEaA4S.input.source_array[@].RM_Search_String$\"\n     },\n     \"name\": \"$activity.definition_activity_021AQEFZA6WH11WyJJdLIbRpgmKBDMEaA4S.input.source_array[@].RM_Name$\"\n}",
+              "content_type": "application/json",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "X-Risk-Token",
+                  "value": "$workflow.definition_workflow_0212ZRNRD53XO29mwWAomqQngNGKccFQ32G.input.variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc$"
+                }
+              ],
+              "description": "Creating Windows Desktop Risk Meters",
+              "display_name": "Create RM from Table",
+              "method": "POST",
+              "relative_url": "/asset_groups/$activity.definition_activity_021A3NVYZWDQX4ZokLyI9WVpKQiSBGGHQjP.output.jsonpath_queries.id$/children",
               "runtime_user": {
                 "target_default": true
               },
