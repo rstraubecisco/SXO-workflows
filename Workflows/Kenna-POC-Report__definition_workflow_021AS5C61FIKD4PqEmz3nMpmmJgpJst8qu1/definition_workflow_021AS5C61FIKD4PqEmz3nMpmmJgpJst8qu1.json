@@ -7,6 +7,19 @@
     "base_type": "workflow",
     "variables": [
       {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Organization",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021C3COS5KG644mypcOA87gpu3FN6EE8sT0",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
         "properties": {
           "value": [
@@ -49,6 +62,32 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Email recipient",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021BLWCRYFXP102JDl7N5USYj0TJhCHoqSo",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Kenna API token",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021AS70JA2MTA1XpBvajOmvySzA2k6CGIvX",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
         "properties": {
           "value": [
@@ -88,45 +127,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_021ASRS4SBN0J6UsTHd1JG5zZJX4BteVnEr",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Organization",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021C3COS5KG644mypcOA87gpu3FN6EE8sT0",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Kenna API token",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021AS70JA2MTA1XpBvajOmvySzA2k6CGIvX",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Email recipient",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021BLWCRYFXP102JDl7N5USYj0TJhCHoqSo",
         "object_type": "variable_workflow"
       },
       {
@@ -930,11 +930,6 @@
       "display_name": "Kenna Query table",
       "columns": [
         {
-          "name": "QueryResult",
-          "title": "Query Result",
-          "type": "string"
-        },
-        {
           "name": "QueryName",
           "title": "Query Name",
           "type": "string"
@@ -942,6 +937,11 @@
         {
           "name": "QueryString",
           "title": "Query String",
+          "type": "string"
+        },
+        {
+          "name": "QueryResult",
+          "title": "Query Result",
           "type": "string"
         }
       ],
