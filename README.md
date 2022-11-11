@@ -27,7 +27,7 @@ Steps:
 - Select your Target
 - Run the workflow 
 - Enter required input for workflow execution (API token, recipients, organization name)
-- Workflow collects the data and 
+- Workflow collects the data
 - Workflow replaces tags in HTTP Email body with data
 - Send Email report to recipients
 
