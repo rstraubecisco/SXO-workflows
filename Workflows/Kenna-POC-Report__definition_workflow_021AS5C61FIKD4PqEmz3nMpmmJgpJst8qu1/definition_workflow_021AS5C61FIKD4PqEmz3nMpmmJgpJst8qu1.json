@@ -7,129 +7,6 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Organization",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021C3COS5KG644mypcOA87gpu3FN6EE8sT0",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
-        "properties": {
-          "value": [
-            {
-              "column_data": {
-                "QueryName": "ScannerTotal",
-                "QueryResult": "",
-                "QueryString": "q=scanner_score:\u003e=0\u0026q=scanner_score:\u003c=10"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "ScannerLow",
-                "QueryResult": "",
-                "QueryString": "q=scanner_score:\u003c=3"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "ScannerMedium",
-                "QueryResult": "",
-                "QueryString": "q=scanner_score:\u003e3\u0026q=scanner_score:\u003c=6"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "ScannerHigh",
-                "QueryResult": "",
-                "QueryString": "q=scanner_score:\u003e6"
-              }
-            }
-          ],
-          "scope": "local",
-          "name": "Scanner queries",
-          "type": "datatype.table",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021ASQHRC1VO22pamy0x0ppVVUpcEMoZUJ8",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Email recipient",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021BLWCRYFXP102JDl7N5USYj0TJhCHoqSo",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Kenna API token",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021AS70JA2MTA1XpBvajOmvySzA2k6CGIvX",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
-        "properties": {
-          "value": [
-            {
-              "column_data": {
-                "QueryName": "KennaTotal",
-                "QueryResult": "",
-                "QueryString": "q=vulnerability_score:\u003e=0\u0026q=scanner_score:\u003c=100"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "KennaLow",
-                "QueryResult": "",
-                "QueryString": "q=vulnerability_score:\u003c=33"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "KennaMedium",
-                "QueryResult": "",
-                "QueryString": "q=vulnerability_score:\u003e33\u0026q=vulnerability_score:\u003c=66"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "KennaHigh",
-                "QueryResult": "",
-                "QueryString": "q=vulnerability_score:\u003e66"
-              }
-            }
-          ],
-          "scope": "local",
-          "name": "Kenna queries",
-          "type": "datatype.table",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021ASRS4SBN0J6UsTHd1JG5zZJX4BteVnEr",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
         "properties": {
           "value": [
@@ -185,6 +62,19 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Email recipient",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021BLWCRYFXP102JDl7N5USYj0TJhCHoqSo",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
         "properties": {
           "value": [
@@ -224,6 +114,116 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_021ASJCXM3YD25HytLcaPXMaulFxKuqhC5T",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Organization",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021C3COS5KG644mypcOA87gpu3FN6EE8sT0",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
+        "properties": {
+          "value": [
+            {
+              "column_data": {
+                "QueryName": "KennaTotal",
+                "QueryResult": "",
+                "QueryString": "min_rounded_risk_meter_score=0\u0026max_rounded_risk_meter_score=100"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "KennaLow",
+                "QueryResult": "",
+                "QueryString": "max_rounded_risk_meter_score=33"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "KennaMedium",
+                "QueryResult": "",
+                "QueryString": "min_rounded_risk_meter_score=34\u0026max_rounded_risk_meter_score=66"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "KennaHigh",
+                "QueryResult": "",
+                "QueryString": "min_rounded_risk_meter_score=67"
+              }
+            }
+          ],
+          "scope": "local",
+          "name": "Kenna queries",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021ASRS4SBN0J6UsTHd1JG5zZJX4BteVnEr",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
+        "properties": {
+          "value": [
+            {
+              "column_data": {
+                "QueryName": "ScannerTotal",
+                "QueryResult": "",
+                "QueryString": "q=scanner_score:\u003e=0\u0026q=scanner_score:\u003c=10"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "ScannerLow",
+                "QueryResult": "",
+                "QueryString": "q=scanner_score:\u003c=3"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "ScannerMedium",
+                "QueryResult": "",
+                "QueryString": "q=scanner_score:\u003e3\u0026q=scanner_score:\u003c=6"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "ScannerHigh",
+                "QueryResult": "",
+                "QueryString": "q=scanner_score:\u003e6"
+              }
+            }
+          ],
+          "scope": "local",
+          "name": "Scanner queries",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021ASQHRC1VO22pamy0x0ppVVUpcEMoZUJ8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Kenna API token",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021AS70JA2MTA1XpBvajOmvySzA2k6CGIvX",
         "object_type": "variable_workflow"
       }
     ],
@@ -595,7 +595,7 @@
               ],
               "continue_on_failure": false,
               "display_name": "Update Row in Table",
-              "input_table": "$workflow.definition_workflow_021AS5C61FIKD4PqEmz3nMpmmJgpJst8qu1.local.variable_workflow_021ASOQZWKZMG7YHBklZN0b4TREQkqSpA12$",
+              "input_table": "$workflow.definition_workflow_021AS5C61FIKD4PqEmz3nMpmmJgpJst8qu1.local.variable_workflow_021ASQHRC1VO22pamy0x0ppVVUpcEMoZUJ8$",
               "row": [
                 {
                   "key": "QueryResult",
@@ -731,7 +731,7 @@
               ],
               "continue_on_failure": false,
               "display_name": "Update Row in Table",
-              "input_table": "$workflow.definition_workflow_021AS5C61FIKD4PqEmz3nMpmmJgpJst8qu1.local.variable_workflow_021ASOQZWKZMG7YHBklZN0b4TREQkqSpA12$",
+              "input_table": "$workflow.definition_workflow_021AS5C61FIKD4PqEmz3nMpmmJgpJst8qu1.local.variable_workflow_021ASRS4SBN0J6UsTHd1JG5zZJX4BteVnEr$",
               "row": [
                 {
                   "key": "QueryResult",
@@ -789,6 +789,22 @@
         ]
       },
       {
+        "unique_name": "definition_activity_021FZ96WWTGSH6kt2fxh04mpUQ7c5D5wdWB",
+        "name": "Format Date",
+        "title": "Format Date",
+        "type": "core.format_date",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Format Date",
+          "format_string": "02 Jan 06 15:04 MST",
+          "original_date": "$workflow.definition_workflow_021AS5C61FIKD4PqEmz3nMpmmJgpJst8qu1.output.start_time$",
+          "skip_execution": false,
+          "use_custom_format": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
         "unique_name": "definition_activity_021C3D4HQ9UWZ1vo3kP7F9VlDc9VpKIzQBo",
         "name": "Replace String",
         "title": "Replace String",
@@ -805,7 +821,7 @@
             },
             {
               "replaced_string": "{rundate}",
-              "replacement_string": "$workflow.definition_workflow_021AS5C61FIKD4PqEmz3nMpmmJgpJst8qu1.output.start_time$"
+              "replacement_string": "$activity.definition_activity_021FZ96WWTGSH6kt2fxh04mpUQ7c5D5wdWB.output.result$"
             }
           ],
           "skip_execution": false
