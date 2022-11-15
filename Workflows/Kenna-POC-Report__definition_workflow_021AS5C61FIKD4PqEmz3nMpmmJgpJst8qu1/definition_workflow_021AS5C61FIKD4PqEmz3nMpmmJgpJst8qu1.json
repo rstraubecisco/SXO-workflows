@@ -7,45 +7,16 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
+        "schema_id": "datatype.string",
         "properties": {
-          "value": [
-            {
-              "column_data": {
-                "QueryName": "CVSSv3Total",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v3_score:\u003e=0\u0026q=cvss_v3_score:\u003c=10"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "CVSSv3Low",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v3_score:\u003c=3.3"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "CVSSv3Medium",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v3_score:\u003e3.3\u0026q=cvss_v3_score:\u003c=6.6"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "CVSSv3High",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v3_score:\u003e6.6"
-              }
-            }
-          ],
-          "scope": "local",
-          "name": "CVSSv3 queries",
-          "type": "datatype.table",
-          "is_required": false,
+          "value": "",
+          "scope": "input",
+          "name": "Organization",
+          "type": "datatype.string",
+          "is_required": true,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_021ASOQZWKZMG7YHBklZN0b4TREQkqSpA12",
+        "unique_name": "variable_workflow_021C3COS5KG644mypcOA87gpu3FN6EE8sT0",
         "object_type": "variable_workflow"
       },
       {
@@ -59,74 +30,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_021BPPY66QVB80SRwyEJZClBhSNDpk7KfcN",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Email recipient",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021BLWCRYFXP102JDl7N5USYj0TJhCHoqSo",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
-        "properties": {
-          "value": [
-            {
-              "column_data": {
-                "QueryName": "CVSSv2Total",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v2_score:\u003e=0\u0026q=cvss_v2_score:\u003c=10"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "CVSSv2Low",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v2_score:\u003c=3.3"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "CVSSv2Medium",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v2_score:\u003e3.3\u0026q=cvss_v2_score:\u003c=6.6"
-              }
-            },
-            {
-              "column_data": {
-                "QueryName": "CVSSv2High",
-                "QueryResult": "",
-                "QueryString": "q=cvss_v2_score:\u003e6.6"
-              }
-            }
-          ],
-          "scope": "local",
-          "name": "CVSSv2 queries",
-          "type": "datatype.table",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021ASJCXM3YD25HytLcaPXMaulFxKuqhC5T",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Organization",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_021C3COS5KG644mypcOA87gpu3FN6EE8sT0",
         "object_type": "variable_workflow"
       },
       {
@@ -169,6 +72,90 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_021ASRS4SBN0J6UsTHd1JG5zZJX4BteVnEr",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
+        "properties": {
+          "value": [
+            {
+              "column_data": {
+                "QueryName": "CVSSv3Total",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v3_score:\u003e=0\u0026q=cvss_v3_score:\u003c=10"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "CVSSv3Low",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v3_score:\u003c=3.3"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "CVSSv3Medium",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v3_score:\u003e3.3\u0026q=cvss_v3_score:\u003c=6.6"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "CVSSv3High",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v3_score:\u003e6.6"
+              }
+            }
+          ],
+          "scope": "local",
+          "name": "CVSSv3 queries",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021ASOQZWKZMG7YHBklZN0b4TREQkqSpA12",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_021ASHOQQ0PF03nYVCqOQar3GZLHvX7iZgn",
+        "properties": {
+          "value": [
+            {
+              "column_data": {
+                "QueryName": "CVSSv2Total",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v2_score:\u003e=0\u0026q=cvss_v2_score:\u003c=10"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "CVSSv2Low",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v2_score:\u003c=3.3"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "CVSSv2Medium",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v2_score:\u003e3.3\u0026q=cvss_v2_score:\u003c=6.6"
+              }
+            },
+            {
+              "column_data": {
+                "QueryName": "CVSSv2High",
+                "QueryResult": "",
+                "QueryString": "q=cvss_v2_score:\u003e6.6"
+              }
+            }
+          ],
+          "scope": "local",
+          "name": "CVSSv2 queries",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021ASJCXM3YD25HytLcaPXMaulFxKuqhC5T",
         "object_type": "variable_workflow"
       },
       {
@@ -224,6 +211,19 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_021AS70JA2MTA1XpBvajOmvySzA2k6CGIvX",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Email recipient",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_021BLWCRYFXP102JDl7N5USYj0TJhCHoqSo",
         "object_type": "variable_workflow"
       }
     ],
@@ -859,7 +859,6 @@
           "continue_if_one_address_valid": false,
           "continue_on_failure": false,
           "display_name": "Send Email",
-          "from": "phishing-berlab@outlook.com",
           "html": true,
           "runtime_user": {
             "target_default": true
@@ -946,11 +945,6 @@
       "display_name": "Kenna Query table",
       "columns": [
         {
-          "name": "QueryName",
-          "title": "Query Name",
-          "type": "string"
-        },
-        {
           "name": "QueryString",
           "title": "Query String",
           "type": "string"
@@ -958,6 +952,11 @@
         {
           "name": "QueryResult",
           "title": "Query Result",
+          "type": "string"
+        },
+        {
+          "name": "QueryName",
+          "title": "Query Name",
           "type": "string"
         }
       ],
