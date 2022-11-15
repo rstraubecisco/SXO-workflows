@@ -12,69 +12,55 @@
           "value": [
             {
               "column_data": {
-                "RM_Name": "Windows Server 2022",
-                "RM_Search_String": "*2022*"
+                "RM_Name": "Windows 11",
+                "RM_Search_String": "Windows 11*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows Server 2019",
-                "RM_Search_String": "*2019*"
+                "RM_Name": "Windows 10",
+                "RM_Search_String": "Windows 10*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows Server 2016",
-                "RM_Search_String": "*2016*"
+                "RM_Name": "Windows 8.x",
+                "RM_Search_String": "Windows 8*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows Server 2012",
-                "RM_Search_String": "*2012*"
+                "RM_Name": "Windows 7",
+                "RM_Search_String": "Windows 7*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows Server 2008",
-                "RM_Search_String": "*2008*"
+                "RM_Name": "Windows XP",
+                "RM_Search_String": "Windows XP*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows Server 2003",
-                "RM_Search_String": "*2003*"
+                "RM_Name": "Windows CE",
+                "RM_Search_String": "Windows CE*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows Server - no fix",
+                "RM_Name": "Windows Desktop - no fixes",
                 "RM_Search_String": "-_exists_:fix"
               }
             }
           ],
           "scope": "local",
-          "name": "Windows Server",
+          "name": "Win Desktops",
           "type": "datatype.table",
-          "description": "List of custom RM definitions with Risk Meter name and search query for Windows Server OS. These RMs will be children of the Windows Server RM. Add other Windows Server RMs as needed.",
+          "description": "List of custom RM definitions with Risk Meter name and search query for Windows Desktop OS. These RMs will be children of the Windows Desktop RM. Add other Windows Desktop RMs as needed.",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_021APENFR9I4D5Ccz2OsOkiFRKqrBKRk8d6",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Kenna API Token",
-          "type": "datatype.string",
-          "description": "Kenna API Token, must be provided at the start of the workflow.",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc",
+        "unique_name": "variable_workflow_021A2T8JTS1WP4HLevPHMjTJMIAPcguTDTW",
         "object_type": "variable_workflow"
       },
       {
@@ -149,20 +135,8 @@
             },
             {
               "column_data": {
-                "RM_Name": "Software - Flash Player High Risk",
-                "RM_Search_String": "vulnerability_score:\u003e80 AND cve_description:\"Flash Player\""
-              }
-            },
-            {
-              "column_data": {
                 "RM_Name": "Software - PrintNightmare",
                 "RM_Search_String": "cve:(2021-1675 OR 2021-34527 OR 2021-34481 OR 2022-22022 OR 2022-22041 OR 2022-30206 OR 2022-30226)"
-              }
-            },
-            {
-              "column_data": {
-                "RM_Name": "Software - Java High Risk with Fixes",
-                "RM_Search_String": "vulnerability_score:\u003e80 AND cve_description:\"JRE\" AND _exists_:fix"
               }
             }
           ],
@@ -177,60 +151,74 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Kenna API Token",
+          "type": "datatype.string",
+          "description": "Kenna API Token, must be provided at the start of the workflow.",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_0212ZUIZIRYWE78STEODVLdBO7jORSN6svc",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "tabletype_0219CKPYO1XYU0C4W6FJS4GmjI2w3X8fYQW",
         "properties": {
           "value": [
             {
               "column_data": {
-                "RM_Name": "Windows 11",
-                "RM_Search_String": "Windows 11*"
+                "RM_Name": "Windows Server 2022",
+                "RM_Search_String": "*2022*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows 10",
-                "RM_Search_String": "Windows 10*"
+                "RM_Name": "Windows Server 2019",
+                "RM_Search_String": "*2019*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows 8.x",
-                "RM_Search_String": "Windows 8*"
+                "RM_Name": "Windows Server 2016",
+                "RM_Search_String": "*2016*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows 7",
-                "RM_Search_String": "Windows 7*"
+                "RM_Name": "Windows Server 2012",
+                "RM_Search_String": "*2012*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows XP",
-                "RM_Search_String": "Windows XP*"
+                "RM_Name": "Windows Server 2008",
+                "RM_Search_String": "*2008*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows CE",
-                "RM_Search_String": "Windows CE*"
+                "RM_Name": "Windows Server 2003",
+                "RM_Search_String": "*2003*"
               }
             },
             {
               "column_data": {
-                "RM_Name": "Windows Desktop - no fixes",
+                "RM_Name": "Windows Server - no fix",
                 "RM_Search_String": "-_exists_:fix"
               }
             }
           ],
           "scope": "local",
-          "name": "Win Desktops",
+          "name": "Windows Server",
           "type": "datatype.table",
-          "description": "List of custom RM definitions with Risk Meter name and search query for Windows Desktop OS. These RMs will be children of the Windows Desktop RM. Add other Windows Desktop RMs as needed.",
+          "description": "List of custom RM definitions with Risk Meter name and search query for Windows Server OS. These RMs will be children of the Windows Server RM. Add other Windows Server RMs as needed.",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_021A2T8JTS1WP4HLevPHMjTJMIAPcguTDTW",
+        "unique_name": "variable_workflow_021APENFR9I4D5Ccz2OsOkiFRKqrBKRk8d6",
         "object_type": "variable_workflow"
       }
     ],
