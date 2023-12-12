@@ -31,7 +31,7 @@ Steps:
 - Workflow replaces tags in HTTP Email body with data
 - Send Email report to recipients
 
-# Umbrella DNS - Blocks 2 Email notifications POC Report
+# Umbrella DNS - Blocks 2 Email notifications
 
 This Cisco XDR Automation workflow is intended to be scheduled to run frequently (hourly). It searches for blocks caused by security categories since the last schedule interval. If it finds blocks then it sends a report via Email to a list of recipients.
 
